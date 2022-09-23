@@ -14,8 +14,8 @@ namespace BusinessWebAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.15")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("BusinessWebAPI.Models.Product", b =>
@@ -30,7 +30,7 @@ namespace BusinessWebAPI.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Products");
+                    b.ToTable("Produits");
                 });
 #pragma warning restore 612, 618
         }

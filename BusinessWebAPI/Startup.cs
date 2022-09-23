@@ -1,4 +1,5 @@
 using BusinessWebAPI.Models;
+using Data.Management;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -45,16 +45,17 @@ namespace BusinessWebAPI
 
 
             services.AddControllers();
+            services.AddScoped<DAL.DAL_Prooducts>();
+
             services.AddDbContext<BusinessContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
-            //services.AddSwaggerGen(c => 
-            //{
-            //    c.SwaggerDoc(name: "v1", new OpenApiInfo { Title = "WebAPI.API", Version = "v1" });
-            //    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()); //This line
+            //Connection to database sql server 
+            //  services.AddTransient<IProductProvider>(f => new ProductProvider("Server= DESKTOP-TOUSOUE\\SQLEXPRESS;Database=BusinessDb;Trusted_Connection=True;MultipleActiveResultSets=True;"));
 
-            //}
-            //);
+            // Register Dapper in scope
+            //services.AddScoped<IDapper, Dapper>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,12 +80,7 @@ namespace BusinessWebAPI
             app.UseDeveloperExceptionPage();
 
             
-            //app.UseSwaggerUI(c =>
-            //{
-            //    c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "WebAPI.API");
-            //   // c.SwaggerEndpoint(url: "/swagger/v2/swagger.json", name: "My API V2");
-
-            //});
+           
         }
     }
 }

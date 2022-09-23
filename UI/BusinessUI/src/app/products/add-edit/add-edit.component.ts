@@ -26,7 +26,7 @@ export class AddEditComponent implements OnInit {
     }
 
     this.service.AddProduct(objproduct).subscribe(res=>{
-      alert(res.toString());
+     //  console.log(res.toString());    
       
     });
   }

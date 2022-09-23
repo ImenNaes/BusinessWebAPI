@@ -9,15 +9,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessWebAPI.Migrations
 {
     [DbContext(typeof(BusinessContext))]
-    [Migration("20220310193509_init")]
-    partial class init
+    [Migration("20220821190546_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.15")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("BusinessWebAPI.Models.Product", b =>
@@ -32,7 +32,7 @@ namespace BusinessWebAPI.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Products");
+                    b.ToTable("Produits");
                 });
 #pragma warning restore 612, 618
         }
